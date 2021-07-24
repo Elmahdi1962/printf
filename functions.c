@@ -1,7 +1,7 @@
 #include "holberton.h"
 #include <stdarg.h>
 #include <stdlib.h>
-
+#include <stdio.h>
 
 
 /**
@@ -14,6 +14,9 @@
 
 int print_char(va_list arg_list __attribute__((unused)))
 {
+	char c __attribute__((unused)) = va_arg(arg_list, int);
+	_putchar('z');
+	printf("ccc");
 	return (0);
 }
 

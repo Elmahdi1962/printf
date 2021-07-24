@@ -19,7 +19,6 @@ int parser(const char* format, va_list arg_list)
 		{"s", print_string}
 	};
 
-
 	for (i = 0; *(format + i) != '\0'; i++)
 	{
 		if (*(format + i) == '%')
@@ -31,7 +30,8 @@ int parser(const char* format, va_list arg_list)
 				print_count++;
 			} else if (*(format + (i + 1)) == '\0')
 			{
-				return (print_count);
+				_putchar('%');
+				return (++print_count);
 			} else
 			{
 			for (s = 0; s < list_len; s++)
