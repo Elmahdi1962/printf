@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include "functions.c"
 #include "_putchar.c"
-#include <stdlib.h>
+
 /**
  * parser - print the string and arguments in the right format
  *
@@ -15,8 +15,8 @@ int parser(const char* format, va_list arg_list)
 {
 	int print_count = 0, i, s, list_len = 2;
 	fs format_list[] = {
-		{'c', NULL},
-		{'s', NULL}
+		{'c', print_char(arg_list)},
+		{'s', print_string(arg_list)}
 	};
 
 	for (i = 0; format[i] != '\0'; i++)
