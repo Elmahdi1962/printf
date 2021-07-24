@@ -12,7 +12,7 @@
  * Return: number of characters printed
  */
 
-int print_char(va_list arg_list)
+int print_char(va_list arg_list __attribute__((unused)))
 {
 	return (0);
 }
@@ -28,7 +28,7 @@ int print_char(va_list arg_list)
  * Return: number of characters printed
  */
 
-int print_string(va_list arg_list)
+int print_string(va_list arg_list __attribute__((unused)))
 {
         return (0);
 }
