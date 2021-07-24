@@ -1,5 +1,5 @@
 # Alx project 0x11. C - printf
-![Github All Contributors](https://img.shields.io/github/all-contributors/all-contributors/all-contributors)
+![Github All Contributors](https://img.shields.io/badge/all%20contributors-2-brightgreen)
 > This is tagged a group project with two members each - With the aim of creating our own C printf function from scratch modeling the the version in the stdio.h standard library.
 
 > ## Objectives
