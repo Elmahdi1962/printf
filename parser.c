@@ -14,10 +14,10 @@
 int parser(const char* format, va_list arg_list)
 {
 	int print_count = 0, i, s, list_len = 2;
-	fs format_list[2];
-
-	format_list[0] = {"c", print_char(arg_list)};
-	format_list[1] = {"s", print_string(arg_list)};
+	fs format_list[] = {
+		{"c", print_char},
+		{"s", print_string}
+	};
 
 
 	for (i = 0; *(format + i) != '\0'; i++)
@@ -34,24 +34,22 @@ int parser(const char* format, va_list arg_list)
 				return (print_count);
 			} else
 			{
-				for (s = 0; s < list_len; s++)
-				{
-				if (*(format + (i + 1)) == (format_list + s)->
-				    specifier)
-				{
-				print_count += (format_list + s)->
-					printer(arg_list);
-				i++;
-				break;
-				}
-				}
+			for (s = 0; s < list_len; s++)
+			{
+			if ((format + (i + 1)) == (format_list + s)->specifier)
+			{
+			print_count += (format_list + s)->printer(arg_list);
+			i++;
+			break;
+			}
+			}
 
-				if (s == list_len)
-				{
-					_putchar(*(format + i));
-					i++;
-					print_count++;
-				}
+			if (s == list_len)
+			{
+				_putchar(*(format + i));
+				i++;
+				print_count++;
+			}
 			}
 		} else
 		{
