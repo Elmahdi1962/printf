@@ -1,7 +1,7 @@
 #include "holberton.h"
 #include <stdarg.h>
-#include "functions.c"
-#include "_putchar.c"
+
+
 
 /**
  * parser - print the string and arguments in the right format
@@ -15,27 +15,27 @@ int parser(const char* format, va_list arg_list)
 {
 	int print_count = 0, i, s, list_len = 2;
 	fs format_list[] = {
-		{'c', print_char(arg_list)},
-		{'s', print_string(arg_list)}
+		{"c", print_char(arg_list)},
+		{"s", print_string(arg_list)}
 	};
 
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; *(format + i) != '\0'; i++)
 	{
-		if (format[i] == '%')
+		if (*(format + i) == '%')
 		{
-			if (format[i + 1] == '%')
+			if (*(format + (i + 1)) == '%')
 			{
 				_putchar('%');
 				i++;
 				print_count++;
-			} else if (format[i + 1] == '\0')
+			} else if (*(format + (i + 1)) == '\0')
 			{
 				return (print_count);
 			} else
 			{
 				for (s = 0; s < list_len; s++)
 				{
-				if (format[i + 1] == format_list[s].specifier)
+					if (*(format + (i + 1)) == format_list[s].specifier)
 				{
 				print_count += format_list[s].printer(arg_list);
 				i++;
@@ -45,14 +45,14 @@ int parser(const char* format, va_list arg_list)
 
 				if (s == list_len)
 				{
-					_putchar(format[i]);
+					_putchar(*(format + i));
 					i++;
 					print_count++;
 				}
 			}
 		} else
 		{
-			_putchar(format[i]);
+			_putchar(*(format + i));
 			print_count++;
 		}
 	}

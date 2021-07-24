@@ -17,9 +17,9 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (0);
-
+	va_start(arg_list, format);
 	print_count = parser(format, arg_list);
-
+	va_end(arg_list);
 	if (print_count)
 		return (print_count);
 
