@@ -1,6 +1,22 @@
 #include "holberton.h"
 #include <stdarg.h>
 
+
+/**
+ * phelper - parser helper becuasebetty can't allow more than 40 lines
+ * >:(
+ * @format: format
+ * @arg_list: arg list
+ * @format_list: format_list struct  array
+ * Retunr: print count
+ */
+
+int phelper(const char *format, va_list arg_list, fs format_list[])
+{
+
+}
+
+
 /**
  * parser - print the string and arguments in the right format
  *
@@ -9,7 +25,7 @@
  * Return: number of characters printed
  */
 
-int parser(const char* format, va_list arg_list)
+int parser(const char *format, va_list arg_list)
 {
 	int print_count = 0, i, s, list_len = 2;
 	fs format_list[] = {
@@ -21,15 +37,16 @@ int parser(const char* format, va_list arg_list)
 	{
 		if (*(format + i) == '%')
 		{
+			if (*(format + (i + 1)) == '\0')
+			{
+				_putchar('%');
+				return (++print_count);
+			}
 			if (*(format + (i + 1)) == '%')
 			{
 				_putchar('%');
 				i++;
 				print_count++;
-			} else if (*(format + (i + 1)) == '\0')
-			{
-				_putchar('%');
-				return (++print_count);
 			} else
 			{
 			for (s = 0; s < list_len; s++)
@@ -42,11 +59,9 @@ int parser(const char* format, va_list arg_list)
 			break;
 			}
 			}
-
 			if (s == list_len)
 			{
 				_putchar(*(format + i));
-				i++;
 				print_count++;
 			}
 			}
@@ -56,6 +71,5 @@ int parser(const char* format, va_list arg_list)
 			print_count++;
 		}
 	}
-
 	return (print_count);
 }
