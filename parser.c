@@ -15,6 +15,7 @@
 int fs_looper(const char *format, va_list arg_list, fs format_list[])
 {
 	int print_count = 0, s, list_len = 4;
+
 	for (s = 0; s < list_len; s++)
 	{
 	if (*(format + 1) == (format_list + s)->specifier[0])
@@ -27,6 +28,7 @@ int fs_looper(const char *format, va_list arg_list, fs format_list[])
 	if (s == list_len)
 	{
 		_putchar(*(format));
+		_putchar(*(format + 1));
 		print_count++;
 	}
 

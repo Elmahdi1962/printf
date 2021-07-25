@@ -30,9 +30,18 @@ int print_char(va_list arg_list __attribute__((unused)))
  * Return: number of characters printed
  */
 
-int print_string(va_list arg_list __attribute__((unused)))
+int print_string(va_list arg_list)
 {
-	return (0);
+	char *string = va_arg(arg_list, char *);
+	int print_count = 0;
+
+	while (*string != '\0')
+	{
+		_putchar(*string);
+		string++;
+		print_count++;
+	}
+	return (print_count);
 }
 
 
@@ -44,9 +53,9 @@ int print_string(va_list arg_list __attribute__((unused)))
  * Return: number of characters printed
  */
 
-int print_decimal(va_list arg_list __attribute__((unused)))
+int print_decimal(va_list arg_list)
 {
-	int d = va_arg(arg_list, int), mult = 1, dc;
+	int d = va_arg(arg_list, int), mult = 1, dc, print_count = 0;
 
 	if (d < 0)
 	{
@@ -55,7 +64,10 @@ int print_decimal(va_list arg_list __attribute__((unused)))
 	}
 	dc = d;
 	if (d < 10 && d >= 0)
+	{
 		_putchar(d + '0');
+		print_count++;
+	}
 	else
 	{
 
@@ -67,11 +79,12 @@ int print_decimal(va_list arg_list __attribute__((unused)))
 		while (mult > 0)
 		{
 			_putchar((d / mult) + '0');
+			print_count++;
 			d -= (d / mult) * mult;
 			mult /= 10;
 		}
 	}
-	return (0);
+	return (print_count);
 }
 
 
