@@ -1,7 +1,5 @@
 #include "holberton.h"
 #include <stdarg.h>
-#include <stdio.h>
-
 
 /**
  * parser - print the string and arguments in the right format
@@ -36,7 +34,8 @@ int parser(const char* format, va_list arg_list)
 			{
 			for (s = 0; s < list_len; s++)
 			{
-			if (*(format + (i + 1)) == (format_list + s)->specifier[0])
+			if (*(format + (i + 1)) == (format_list + s)->
+			    specifier[0])
 			{
 			print_count += (format_list + s)->printer(arg_list);
 			i++;
