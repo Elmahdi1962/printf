@@ -2,18 +2,77 @@
 #include <stdarg.h>
 
 
+
 /**
- * phelper - parser helper becuasebetty can't allow more than 40 lines
+ * fs_looper - parser helper becuasebetty can't allow more than 40 lines
  * >:(
  * @format: format
  * @arg_list: arg list
  * @format_list: format_list struct  array
- * Retunr: print count
+ * Return: print count
  */
 
-int phelper(const char *format, va_list arg_list, fs format_list[])
+int fs_looper(const char *format, va_list arg_list, fs format_list[])
 {
+	int print_count = 0, s, list_len = 2;
+	for (s = 0; s < list_len; s++)
+	{
+	if (*(format + 1) == (format_list + s)->specifier[0])
+	{
+		print_count += (format_list + s)->printer(arg_list);
+		format++;
+		break;
+	}
+	}
+	if (s == list_len)
+	{
+		_putchar(*(format));
+		print_count++;
+	}
 
+	return (print_count);
+}
+
+/**
+ * format_looper - parser helper becuasebetty can't allow more than 40 lines
+ * >:(
+ * @format: format
+ * @arg_list: arg list
+ * @format_list: format_list struct  array
+ * Return: print count
+ */
+
+int format_looper(const char *format, va_list arg_list, fs format_list[])
+{
+	int print_count = 0;
+
+	for (; *format != '\0'; format++)
+	{
+		if (*format == '%')
+		{
+			if (*(format + 1) == '\0')
+			{
+				_putchar('%');
+				return (++print_count);
+			}
+			if (*(format + 1) == '%')
+			{
+				_putchar('%');
+				format++;
+				print_count++;
+			} else
+			{
+			print_count += fs_looper(format, arg_list,
+						 format_list);
+			format++;
+			}
+		} else
+		{
+			_putchar(*format);
+			print_count++;
+		}
+	}
+	return (print_count);
 }
 
 
@@ -27,49 +86,10 @@ int phelper(const char *format, va_list arg_list, fs format_list[])
 
 int parser(const char *format, va_list arg_list)
 {
-	int print_count = 0, i, s, list_len = 2;
 	fs format_list[] = {
 		{"c", print_char},
 		{"s", print_string}
 	};
 
-	for (i = 0; *(format + i) != '\0'; i++)
-	{
-		if (*(format + i) == '%')
-		{
-			if (*(format + (i + 1)) == '\0')
-			{
-				_putchar('%');
-				return (++print_count);
-			}
-			if (*(format + (i + 1)) == '%')
-			{
-				_putchar('%');
-				i++;
-				print_count++;
-			} else
-			{
-			for (s = 0; s < list_len; s++)
-			{
-			if (*(format + (i + 1)) == (format_list + s)->
-			    specifier[0])
-			{
-			print_count += (format_list + s)->printer(arg_list);
-			i++;
-			break;
-			}
-			}
-			if (s == list_len)
-			{
-				_putchar(*(format + i));
-				print_count++;
-			}
-			}
-		} else
-		{
-			_putchar(*(format + i));
-			print_count++;
-		}
-	}
-	return (print_count);
+	return (format_looper(format, arg_list, format_list));
 }
