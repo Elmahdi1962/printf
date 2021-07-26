@@ -29,5 +29,6 @@ int isoctal(char *string);
 int octaltodecimal(char *string);
 int fs_looper(const char *format, va_list arg_list, fs format_list[]);
 int format_looper(const char *format, va_list arg_list, fs format_list[]);
+int print_unsigned(va_list arg_list);
 
 #endif
