@@ -71,29 +71,27 @@ int print_octal(va_list arg_list)
  * Return: number of charachters printed
  */
 
-int print_unsignedTobinary(va_list arg_list)
+int print_unsignedTobinary(int num)
 {
-unsigned int n = va_arg(arg_list, unsigned int);
-unsigned int printed;
-
-print_binary(n, &printed);
-
-return (printed);
+	if (num < 2)
+		return num;
+	return (print_unsignedTobinary(num / 2) * 10 + num % 2);
 }
 
-
-/**
- * print_binary - function that prints the binary representation of a number
- * @n: number to be printed in binary
- * @printed: hold the number of characters printed
- */
-
-void print_binary(unsigned int n, unsigned int *printed)
+int print_binary(va_list arg_list)
 {
-	if (n > 1)
+	int num = va_arg(arg_list, int), print_count = 0, result;
+	char *str;
+
+	result = print_unsignedTobinary(num);
+	str = inttostr(result);
+
+	while (*str != '\0')
 	{
-		*printed += 1;
-		print_binary(n >> 1, printed);
+		_putchar(*str);
+		str++;
+		if (*str == 0 || (*str > 31 && *str < 127))
+			print_count++;
 	}
-	_putchar((n & 1) + '0');
+	return (print_count - 10);
 }

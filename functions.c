@@ -147,7 +147,7 @@ int print_hex(va_list arg_list)
 char *inttostr(int number)
 {
 	int i, nlen = intlen(number), rem;
-	char *str = malloc(sizeof(char) * (nlen + 1));
+	char *str = malloc(sizeof(char) * nlen + 1);
 
 	for (i = 0; i < nlen; i++)
 	{

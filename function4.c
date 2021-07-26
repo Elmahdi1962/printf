@@ -21,7 +21,8 @@ int _pow(unsigned int base, int power)
 
 int print_memory(va_list arg_list)
 {
-    return (0);
+	int d = va_arg(arg_list,int);
+	return (d);
 }
 
 

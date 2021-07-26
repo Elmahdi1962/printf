@@ -97,7 +97,7 @@ int parser(const char *format, va_list arg_list)
 		{"X", print_HEX},
 		{"o", print_octal},
 		{"u", print_unsigned},
-		{"b", print_unsignedTobinary},
+		{"b", print_binary},
 		{"p", print_hex},
 		{"S", print_STR}
 	};
