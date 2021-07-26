@@ -36,11 +36,21 @@ int print_string(va_list arg_list)
 	char *string = va_arg(arg_list, char *);
 	int print_count = 0;
 
+	if (string == NULL)
+	{
+		while ("(null)"[print_count] != '\0')
+		{
+			_putchar("(null)"[print_count]);
+			print_count++;
+		}
+	} else
+	{
 	while (*string != '\0')
 	{
 		_putchar(*string);
 		string++;
 		print_count++;
+	}
 	}
 	return (print_count);
 }
