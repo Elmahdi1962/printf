@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdlib.h>
 
 /**
  * intlen - count how many digit the number have
@@ -79,4 +80,40 @@ int _strlen(char *s)
 		s++;
 	}
 	return (counter);
+}
+
+
+/**
+ * print_HEX - prints a hexadecimal
+ * @format: format to print hexadecimal
+ * @pa: va_list that contains the hexadecimal to print
+ * Return: number of digits printed
+ */
+int print_HEX(va_list arg_list)
+{
+	unsigned int NUM = va_arg(arg_list, unsigned int);
+	unsigned int NUM2;
+	int I, I2, COPY, CONTAME = 0;
+	char *NUMHEX;
+
+	if (NUM == 0)
+		return (_putchar('0'));
+	for (NUM2 = NUM; NUM2 != 0; CONTAME++)
+	{
+		NUM2 = NUM2 / 16;
+	}
+	NUMHEX = malloc(CONTAME);
+	for (I = 0; NUM != 0; I++)
+	{
+		COPY = NUM % 16;
+		if (COPY < 10)
+			NUMHEX[I] = COPY + '0';
+		else
+			NUMHEX[I] = COPY - 10 + 'A';
+		NUM = NUM / 16;
+	}
+	for (I2 = I - 1; I2 >= 0; I2--)
+		_putchar(NUMHEX[I2]);
+	free(NUMHEX);
+	return (CONTAME);
 }

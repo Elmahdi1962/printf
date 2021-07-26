@@ -100,62 +100,31 @@ int print_decimal(va_list arg_list)
 
 int print_hex(va_list arg_list)
 {
-        int d = va_arg(arg_list, int), mult = 1, dc, print_count = 0;
+	unsigned int num = va_arg(arg_list, unsigned int);
+	unsigned int num2;
+	int i, i2, copy, contame = 0;
+	char *numhex;
 
-        if (d < 0)
-        {
-                d = -d;
-                _putchar('-');
-        }
-
-        dc = d;
-        if (d < 10 && d >= 0)
-        {
-                _putchar(d + '0');
-                print_count++;
-        }
-        else
-        {
-                while (dc > 9)
-                {
-                        mult *= 16;
-                        dc /= 16;
-                }
-                while (mult > 0)
-                {
-			if ((d / mult) < 10)
-				_putchar((d / mult) + '0');
-			else
-			{
-				switch ((d / mult))
-				{
-				case 10:
-					_putchar('A');
-					break;
-				case 11:
-					_putchar('B');
-					break;
-				case 12:
-					_putchar('C');
-					break;
-				case 13:
-					_putchar('D');
-					break;
-				case 14:
-					_putchar('E');
-					break;
-				case 15:
-					_putchar('F');
-					break;
-				}
-			}
-                        print_count++;
-                        d -= (d / mult) * mult;
-                        mult /= 10;
-                }
-        }
-
-        return (print_count);
+	if (num == 0)
+		return (_putchar('0'));
+	for (num2 = num; num2 != 0; contame++)
+	{
+		num2 = num2 / 16;
+	}
+	numhex = malloc(contame);
+	for (i = 0; num != 0; i++)
+	{
+		copy = num % 16;
+		if (copy < 10)
+			numhex[i] = copy + '0';
+		else
+			numhex[i] = copy - 10  + 'a';
+		num = num / 16;
+	}
+	for (i2 = i - 1; i2 >= 0; i2--)
+		_putchar(numhex[i2]);
+	free(numhex);
+	return (contame);
 }
 
 
