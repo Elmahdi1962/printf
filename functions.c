@@ -12,9 +12,9 @@
 
 int print_char(va_list arg_list)
 {
-/*	char c = va_arg(arg_list, int);
-	_putchar(c);*/
-	return (_putchar(va_arg(arg_list, int)));
+	char c = va_arg(arg_list, int);
+	_putchar(c);
+	return (1);
 }
 
 
@@ -30,18 +30,26 @@ int print_char(va_list arg_list)
 
 int print_string(va_list arg_list)
 {
-int i;
-char *str = va_arg(arg_list, char*);
+	char *string = va_arg(arg_list, char *);
+	int print_count = 0;
 
-if (str == NULL)
-	str = "(null)";
-else if (*str == '\0')
-	return (-1);
-
-for (i = 0; str[i]; i++)
-	_putchar(str[i]);
-
-return (i);
+	if (string == NULL)
+	{
+		while ("(null)"[print_count] != '\0')
+		{
+			_putchar("(null)"[print_count]);
+			print_count++;
+		}
+	} else
+	{
+	while (*string != '\0')
+	{
+		_putchar(*string);
+		string++;
+		print_count++;
+	}
+	}
+	return (print_count);
 }
 
 
