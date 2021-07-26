@@ -14,7 +14,7 @@ int _printf(const char *format, ...);
 int print_char(va_list);
 int print_string(va_list);
 int print_decimal(va_list);
-int print_integer(va_list);
+int print_hex(va_list);
 char *inttostr(int number);
 int _strlen(char *string);
 int intlen(int number);

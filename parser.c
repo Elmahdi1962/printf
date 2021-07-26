@@ -14,7 +14,7 @@
 
 int fs_looper(const char *format, va_list arg_list, fs format_list[])
 {
-	int print_count = 0, s, list_len = 4;
+	int print_count = 0, s, list_len = 5;
 
 	for (s = 0; s < list_len; s++)
 	{
@@ -92,7 +92,8 @@ int parser(const char *format, va_list arg_list)
 		{"c", print_char},
 		{"s", print_string},
 		{"d", print_decimal},
-		{"i", print_decimal}
+		{"i", print_decimal},
+		{"x", print_hex}
 	};
 
 	return (format_looper(format, arg_list, format_list));

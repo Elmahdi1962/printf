@@ -91,23 +91,71 @@ int print_decimal(va_list arg_list)
 
 
 /**
- * print_integer - prints integer numbers
+ * print_hex - prints hex numbers
  *
  * @arg_list: arguments list
  *
  * Return: number of characters printed
  */
 
-int print_integer(va_list arg_list __attribute__((unused)))
+int print_hex(va_list arg_list)
 {
-	/*we called print_decimal cuz they do same thing*/
-	int i = va_arg(arg_list, int);
+        int d = va_arg(arg_list, int), mult = 1, dc, print_count = 0;
 
-	if (i < 10)
-		_putchar(i + '0');
-	else
-		_putchar('0');
-	return (0);
+        if (d < 0)
+        {
+                d = -d;
+                _putchar('-');
+        }
+
+        dc = d;
+        if (d < 10 && d >= 0)
+        {
+                _putchar(d + '0');
+                print_count++;
+        }
+        else
+        {
+                while (dc > 9)
+                {
+                        mult *= 16;
+                        dc /= 16;
+                }
+                while (mult > 0)
+                {
+			if ((d / mult) < 10)
+				_putchar((d / mult) + '0');
+			else
+			{
+				switch ((d / mult))
+				{
+				case 10:
+					_putchar('A');
+					break;
+				case 11:
+					_putchar('B');
+					break;
+				case 12:
+					_putchar('C');
+					break;
+				case 13:
+					_putchar('D');
+					break;
+				case 14:
+					_putchar('E');
+					break;
+				case 15:
+					_putchar('F');
+					break;
+				}
+			}
+                        print_count++;
+                        d -= (d / mult) * mult;
+                        mult /= 10;
+                }
+        }
+
+        return (print_count);
 }
 
 
