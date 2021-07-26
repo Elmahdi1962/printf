@@ -24,6 +24,7 @@ int print_hex(va_list);
 int print_HEX(va_list);
 int print_octal(va_list arg_list);
 char *inttostr(int number);
+int print_unsigned(va_list arg_list);
 int _strlen(char *string);
 int intlen(int number);
 int isoctal(char *string);
