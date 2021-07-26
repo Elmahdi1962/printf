@@ -1,5 +1,6 @@
 #include "holberton.h"
-
+#include <stddef.h>
+#include <stdlib.h>
 
 /**
  *_pow - raises the number base to power power
@@ -16,4 +17,43 @@ int _pow(unsigned int base, int power)
 		prod = prod * base;
 	}
 	return (prod);
+}
+
+int print_memory(va_list arg_list)
+{
+    return (0);
+}
+
+
+
+
+/**
+ * print_STR - prints a string with a `S` (upper case) specificer
+ * @arg: argument
+ * Return: number of character printed
+ */
+
+int print_STR(va_list arg_list)
+{
+        char *string = va_arg(arg_list, char *);
+        int print_count = 0;
+
+        if (string == NULL)
+        {
+                while ("(null)"[print_count] != '\0')
+                {
+                        _putchar("(null)"[print_count]);
+                        print_count++;
+                }
+        } else
+        {
+        while (*string != '\0')
+        {
+                _putchar(*string + 32);
+                string++;
+                print_count++;
+        }
+        }
+        return (print_count);
+
 }
