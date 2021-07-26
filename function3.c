@@ -1,5 +1,4 @@
 #include "holberton.h"
-<<<<<<< HEAD
 #include <stdarg.h>
 #include <stdlib.h>
 
@@ -23,8 +22,10 @@ for (; divisor >= 1; n %= divisor, divisor /= 10)
 	_putchar('0' + resp);
 }
 return (i + 1);
-=======
-#include <stdlib.h>
+}
+
+
+
 /**
  * print_octal - prints a hexadecimal
  * @arg_list: list that contains the hexadecimal
@@ -60,5 +61,4 @@ int print_octal(va_list arg_list)
 	}
 	free(octa);
 	return (print_count);
->>>>>>> refs/remotes/origin/master
 }
