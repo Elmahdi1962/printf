@@ -93,5 +93,5 @@ int print_binary(va_list arg_list)
 		if (*str == 0 || (*str > 31 && *str < 127))
 			print_count++;
 	}
-	return (print_count - 10);
+	return (print_count);
 }
