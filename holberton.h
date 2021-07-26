@@ -2,6 +2,12 @@
 #define HOLBERTON_H
 #include <stdarg.h>
 
+/**
+ * struct format_specifiers - struct holing each format specifier with
+ * its callback
+ * @specifier: the format specifier
+ * @printer: callback for printing the argument
+ */
 typedef struct format_specifiers
 {
 	char *specifier;
@@ -9,7 +15,7 @@ typedef struct format_specifiers
 } fs;
 
 int _putchar(char c);
-int parser(const char* format, va_list arg_list);
+int parser(const char *format, va_list arg_list);
 int _printf(const char *format, ...);
 int print_char(va_list);
 int print_string(va_list);

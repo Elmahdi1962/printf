@@ -7,7 +7,7 @@
  *
  * @format: format string
  *
- * Retunr: number of charachters printed
+ * Return: number of charachters printed
  */
 
 int _printf(const char *format, ...)
@@ -19,8 +19,10 @@ int _printf(const char *format, ...)
 		return (0);
 
 	va_start(arg_list, format);
+
 	print_count = parser(format, arg_list);
-        va_end(arg_list);
+
+	va_end(arg_list);
 
 	if (print_count)
 		return (print_count);

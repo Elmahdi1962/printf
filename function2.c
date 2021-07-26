@@ -85,8 +85,7 @@ int _strlen(char *s)
 
 /**
  * print_HEX - prints a hexadecimal
- * @format: format to print hexadecimal
- * @pa: va_list that contains the hexadecimal to print
+ * @arg_list: va_list that contains the hexadecimal to print
  * Return: number of digits printed
  */
 int print_HEX(va_list arg_list)
