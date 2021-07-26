@@ -12,12 +12,8 @@
 
 int print_char(va_list arg_list)
 {
-	char c = va_arg(arg_list, int);
-	int print_count = 0;
-
-	_putchar(c);
-
-	return (++print_count);
+	_putchar(va_arg(arg_list, int));
+	return (1);
 }
 
 
