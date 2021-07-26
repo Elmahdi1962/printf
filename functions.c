@@ -62,6 +62,7 @@ int print_decimal(va_list arg_list)
 	{
 		d = -d;
 		_putchar('-');
+		print_count++;
 	}
 
 	dc = d;

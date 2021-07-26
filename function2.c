@@ -92,16 +92,16 @@ int print_HEX(va_list arg_list)
 {
 	unsigned int NUM = va_arg(arg_list, unsigned int);
 	unsigned int NUM2;
-	int I, I2, COPY, CONTAME = 0;
+	int I, I2, COPY, print_count = 0;
 	char *NUMHEX;
 
 	if (NUM == 0)
 		return (_putchar('0'));
-	for (NUM2 = NUM; NUM2 != 0; CONTAME++)
+	for (NUM2 = NUM; NUM2 != 0; print_count++)
 	{
 		NUM2 = NUM2 / 16;
 	}
-	NUMHEX = malloc(CONTAME);
+	NUMHEX = malloc(print_count);
 	for (I = 0; NUM != 0; I++)
 	{
 		COPY = NUM % 16;
@@ -114,5 +114,5 @@ int print_HEX(va_list arg_list)
 	for (I2 = I - 1; I2 >= 0; I2--)
 		_putchar(NUMHEX[I2]);
 	free(NUMHEX);
-	return (CONTAME);
+	return (print_count);
 }
