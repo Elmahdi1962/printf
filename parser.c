@@ -92,7 +92,7 @@ int parser(const char *format, va_list arg_list)
 		{"c", print_char},
 		{"s", print_string},
 		{"d", print_decimal},
-		{"i", print_integer}
+		{"i", print_decimal}
 	};
 
 	return (format_looper(format, arg_list, format_list));

@@ -2,7 +2,6 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-
 /**
  * print_char - prints characters
  *
@@ -57,8 +56,7 @@ int print_string(va_list arg_list)
 
 int print_decimal(va_list arg_list)
 {
-	int d = va_arg(arg_list, int), decoct, mult = 1, dc, print_count = 0;
-	char *string, *tmps;
+	int d = va_arg(arg_list, int), mult = 1, dc, print_count = 0;
 
 	if (d < 0)
 	{
@@ -66,52 +64,28 @@ int print_decimal(va_list arg_list)
 		_putchar('-');
 	}
 
-	string = inttostr(d);
-
-	if (*string == '0' && *(string + 1) == 'x')
+	dc = d;
+	if (d < 10 && d >= 0)
 	{
-		/*it's hex number*/
-		_putchar('x');
-
-	} else if (*string == '0' && isoctal(string))
-	{
-		/*it's octal number*/
-		decoct = octaltodecimal((++string));
-		tmps = inttostr(decoct);
-		while (*tmps != '\0')
-		{
-			_putchar(*tmps);
-			print_count++;
-		}
-		free(tmps);
-	} else
-	{
-		/*it's normal number */
-		dc = d;
-		if (d < 10 && d >= 0)
-		{
-			_putchar(d + '0');
-			print_count++;
-		}
-		else
-		{
-
-			while (dc > 9)
-			{
-				mult *= 10;
-				dc /= 10;
-			}
-			while (mult > 0)
-			{
-				_putchar((d / mult) + '0');
-				print_count++;
-				d -= (d / mult) * mult;
-				mult /= 10;
-			}
-		}
-
+		_putchar(d + '0');
+		print_count++;
 	}
-	free(string);
+	else
+	{
+		while (dc > 9)
+		{
+			mult *= 10;
+			dc /= 10;
+		}
+		while (mult > 0)
+		{
+			_putchar((d / mult) + '0');
+			print_count++;
+			d -= (d / mult) * mult;
+			mult /= 10;
+		}
+	}
+
 	return (print_count);
 }
 
@@ -126,6 +100,7 @@ int print_decimal(va_list arg_list)
 
 int print_integer(va_list arg_list __attribute__((unused)))
 {
+	/*we called print_decimal cuz they do same thing*/
 	int i = va_arg(arg_list, int);
 
 	if (i < 10)
