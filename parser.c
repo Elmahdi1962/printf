@@ -37,7 +37,16 @@ int fs_looper(const char *format, const char **formatt, va_list arg_list,
 	}
 	if (s == list_len)
 	{
-		return (-1);
+		if (*(format + 1) > 96 && *(format + 1) < 123)
+			return (-1);
+		else
+		{
+			_putchar(*format);
+			_putchar(*(format + 1));
+			format++;
+			formatt++;
+			return (2);
+		}
 	}
 
 	return (print_count);
