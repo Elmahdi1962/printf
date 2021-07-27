@@ -93,7 +93,7 @@ int print_rev(va_list arg)
 
 /**
  * print_R - prints a string in rot13
- * @R: string to print
+ * @arg: string to print
  *
  * Return: number of chars printed
  */
