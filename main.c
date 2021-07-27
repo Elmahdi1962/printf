@@ -19,6 +19,9 @@ int main(void)
     ui = (unsigned int)INT_MAX + 1024;
     addr = (void *)0x7ffe637541f0;
 
+_printf("Character:[%05.2s]\n", "\x12\x22\x05");
+printf("Character:[%05.2s]\n", "\x12\x22\x05");
+    
     _printf("string: %s, string: %s \n", "hello", "world");
     _printf("char: %c, char: %c \n", "h", "w");
     printf("char: %c, char: %c \n", "h", "w");

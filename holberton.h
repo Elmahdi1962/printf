@@ -14,7 +14,7 @@ typedef struct format_specifiers
 	int (*printer)(va_list arg_list);
 } fs;
 
-
+int _puts(char *str, int ascii);
 int print_STR(va_list arg);
 int print_memory(va_list arg_list);
 int _putchar(char c);
