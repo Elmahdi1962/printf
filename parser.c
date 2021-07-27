@@ -16,7 +16,7 @@
 int fs_looper(const char *format, const char **formatt, va_list arg_list,
 	      fs format_list[])
 {
-	int print_count = 0, s = 0, list_len = 12;
+	int print_count = 0, s = 0, list_len = 11;
 
 	while (s < list_len)
 	{
@@ -109,7 +109,6 @@ int parser(const char *format, va_list arg_list)
 		{"u", print_unsigned},
 		{"b", print_binary},
 		{"p", print_hex},
-		{"S", print_STR},
 		{"R", print_R}
 	};
 	if (!format || (format[0] == '%' && format[1] == '\0'))

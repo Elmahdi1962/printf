@@ -1,7 +1,6 @@
 #include <limits.h>
 #include <stdio.h>
 #include "holberton.h"
-#include <stdlib.h>
 /**
  * main - Entry point
  *
@@ -9,57 +8,20 @@
  */
 int main(void)
 {
-    int len;
-    int len2;
-    unsigned int ui;
-    void *addr;
-    int d;
-   
-    len = _printf("Let's try to printf a simple sentence.\n");
-    len2 = printf("Let's try to printf a simple sentence.\n");
-    ui = (unsigned int)INT_MAX + 1024;
-    addr = (void *)0x7ffe637541f0;
-    d= _printf("%r\n");
-
-
-    printf("length: %d\n", d);
-    _printf("%!\n");
-    _printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
-
-    _printf("char: %c, char: %c \n", "h");
-    printf("char: %c, char: %c \n", "h");
-    _printf("char: %c, char: %c \n", 'h');
-    printf("char: %c, char: %c \n", 'h');
-    _printf("int using d: %d\n", 5);
-    _printf("octal using d: %d\n", 012);
-    _printf("hex using d: %d\n\n", 0xff);
-    _printf("binary:[%b]\n", 98);
-    printf("binary:[%d]\n", 1100010);
-printf("binary:[%d]\n",  _printf("binary:[%b]\n", 98));
-    _printf("Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
-    _printf("Negative:[%d]\n", -762534);
-    printf("Negative:[%d]\n", -762534);
-    _printf("Unsigned:[%u]\n", ui);
-    printf("Unsigned:[%u]\n", ui);
-    _printf("Unsigned octal:[%o]\n", ui);
-    printf("Unsigned octal:[%o]\n", ui);
-    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    _printf("Character:[%c]\n", 'H');
-    printf("Character:[%c]\n", 'H');
-    _printf("String:[%s]\n", "I am a string !");
-    printf("String:[%s]\n", "I am a string !");
-
-    _printf("Address:[%p]\n", addr);
-    printf("Address:[%p]\n", addr);
-    len = _printf("Percent:[%%]\n");
-    len2 = printf("Percent:[%%]\n");
-    _printf("Len:[%d]\n", len);
-    printf("Len:[%d]\n", len2);
-    _printf("Unknown:[%r]\n");
-    printf("Unknown:[%r]\n");
-    _printf("Unknown:[%r]\n", "hello");
-    return (0);
-}
-
+        int len, len1;
+        _printf("Character:[%c]\n", '\0');
+        printf("Character:[%c]\n", '\0');
+        len = printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+        len1 = _printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+        printf("%d, %d\n", len, len1);
+        len = _printf("%    s\n", "1Hi");
+        len1 = printf("%    s\n", "2Hi");
+        printf("%d, %d\n", len, len1);
+        printf("\n");
+        printf("%!\n");
+        _printf("%!\n");
+	len1=_printf("%%\n");
+	len=printf("%%\n");
+	printf("%d, %d\n", len1, len);
+        return (0);
+}                            
