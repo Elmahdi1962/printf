@@ -37,9 +37,7 @@ int fs_looper(const char *format, const char **formatt, va_list arg_list,
 	}
 	if (s == list_len)
 	{
-		_putchar(*format);
-		_putchar(*(++format));
-		print_count += 1;
+		return (-1);
 	}
 
 	return (print_count);
