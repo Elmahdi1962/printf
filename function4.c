@@ -64,3 +64,28 @@ int print_STR(va_list arg_list)
 	return (print_count);
 
 }
+
+
+/**
+ * print_rev - prints a string in reverse
+ * @arg: argument from _printf
+ * if a flag is passed to _printf
+ * Return: length of the printed string
+ */
+int print_rev(va_list arg)
+{
+	char *str;
+	int i, count = 0;
+
+	str = va_arg(arg, char *);
+	if (str == NULL)
+		str = ")llun(";
+	for (i = 0; str[i]; i++)
+		;
+	for (i -= 1; i >= 0; i--)
+	{
+		_putchar(str[i]);
+		count++;
+	}
+	return (count);
+}

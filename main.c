@@ -19,14 +19,11 @@ int main(void)
     ui = (unsigned int)INT_MAX + 1024;
     addr = (void *)0x7ffe637541f0;
 
-_printf("Character:[%05.2s]\n", "\x12\x22\x05");
-printf("Character:[%05.2s]\n", "\x12\x22\x05");
-    
-    _printf("string: %s, string: %s \n", "hello", "world");
-    _printf("char: %c, char: %c \n", "h", "w");
-    printf("char: %c, char: %c \n", "h", "w");
-    _printf("char: %c, char: %c \n", 'h', 'w');
-    printf("char: %c, char: %c \n", 'h', 'w');
+    _printf("string: %s, string: %s \n", "hello");
+    _printf("char: %c, char: %c \n", "h");
+    printf("char: %c, char: %c \n", "h");
+    _printf("char: %c, char: %c \n", 'h');
+    printf("char: %c, char: %c \n", 'h');
     _printf("int using d: %d\n", 5);
     _printf("octal using d: %d\n", 012);
     _printf("hex using d: %d\n\n", 0xff);
@@ -56,6 +53,7 @@ printf("binary:[%d]\n",  _printf("binary:[%b]\n", 98));
     printf("Len:[%d]\n", len2);
     _printf("Unknown:[%r]\n");
     printf("Unknown:[%r]\n");
+    _printf("Unknown:[%r]\n", "hello");
     return (0);
 }
 
