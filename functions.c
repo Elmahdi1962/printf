@@ -39,20 +39,16 @@ int print_string(va_list arg_list)
 
 	if (string == NULL)
 	{
-		while ("(null)"[print_count] != '\0')
-		{
-			_putchar("(null)"[print_count]);
-			print_count++;
-		}
-	} else
-	{
+		string = "(null)";
+	}
+
 	while (*string != '\0')
 	{
 		_putchar(*string);
 		string++;
 		print_count++;
 	}
-	}
+
 	return (print_count);
 }
 
