@@ -29,5 +29,10 @@ int main(void)
 
 	len = _printf("%    s\n", "1Hi");
 	printf("%d\n", len);
-        return (0);
-}                            
+
+        len = _printf("%d", 2.5);
+        printf("\n%d\n", len);
+
+
+	return (0);
+}

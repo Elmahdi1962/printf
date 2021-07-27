@@ -24,8 +24,5 @@ int _printf(const char *format, ...)
 
 	va_end(arg_list);
 
-	if (print_count)
-		return (print_count);
-
-	return (0);
+	return (print_count);
 }
