@@ -16,16 +16,14 @@
 int fs_looper(const char *format, const char **formatt, va_list arg_list,
 	      fs format_list[])
 {
-	int print_count = 0, s, list_len = 13;
+	int print_count = 0, s = 0, list_len = 13;
 
-	for (s = 0; s < list_len; s++)
+	while (s < list_len)
 	{
 		if (*(format + 1) == " "[0])
 		{
 			format++;
 			(*formatt)++;
-			_putchar(' ');
-			print_count++;
 			s = 0;
 			continue;
 		}
@@ -35,10 +33,12 @@ int fs_looper(const char *format, const char **formatt, va_list arg_list,
 		format++;
 		break;
 		}
+		s++;
 	}
 	if (s == list_len)
 	{
-		print_count = -1;
+		_putchar('%');
+		print_count += 1;
 	}
 
 	return (print_count);
@@ -73,8 +73,8 @@ int format_looper(const char *format, va_list arg_list, fs format_list[])
 				print_count++;
 			} else
 			{
-				print_count += fs_looper(format, &format,
-							 arg_list, format_list);
+			print_count += fs_looper(format, &format,
+						 arg_list, format_list);
 			format++;
 			}
 		} else
