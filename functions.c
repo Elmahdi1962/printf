@@ -33,20 +33,18 @@ int print_char(va_list arg_list)
 
 int print_string(va_list arg_list)
 {
-	char *string = va_arg(arg_list, char *);
-	int print_count = 0;
+	char *string;
+	int print_count;
+
+	string = va_arg(arg_list, char *);
 
 	if (string == NULL)
 	{
 		string = "(null)";
 	}
 
-	while (*string != '\0')
-	{
-		_putchar(*string);
-		string++;
-		print_count++;
-	}
+	for (print_count = 0; string[print_count] != '\0'; print_count++)
+		_putchar(string[print_count]);
 
 	return (print_count);
 }

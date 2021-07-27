@@ -23,5 +23,11 @@ int main(void)
 	len1=_printf("%%\n");
 	len=printf("%%\n");
 	printf("%d, %d\n", len1, len);
+
+        len=printf("%");
+        printf("\n%d\n", len);
+
+	len = _printf("%    s\n", "1Hi");
+	printf("%d\n", len);
         return (0);
 }                            
