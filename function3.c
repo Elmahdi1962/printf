@@ -65,18 +65,27 @@ int print_octal(va_list arg_list)
 
 
 /**
- * print_unsignedToBinary - function that prints the binary
+ * print_unsignedTobinary - function that prints the binary
  * representation of a number
- * @arg_list: argument list
- * Return: number of charachters printed
+ * @num: num
+ * Return: binary number
  */
 
 int print_unsignedTobinary(int num)
 {
 	if (num < 2)
-		return num;
+		return (num);
 	return (print_unsignedTobinary(num / 2) * 10 + num % 2);
 }
+
+
+/**
+ * print_binary - function that prints the binary
+ * representation of a number
+ * @arg_list: argument list
+ * Return: number of charachters printed
+ */
+
 
 int print_binary(va_list arg_list)
 {
