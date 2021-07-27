@@ -7,23 +7,34 @@
  * fs_looper - parser helper becuasebetty can't allow more than 40 lines
  * >:(
  * @format: format
+ * @formatt: pointer to original format
  * @arg_list: arg list
  * @format_list: format_list struct  array
  * Return: print count
  */
 
-int fs_looper(const char *format, va_list arg_list, fs format_list[])
+int fs_looper(const char *format, const char **formatt, va_list arg_list,
+	      fs format_list[])
 {
 	int print_count = 0, s, list_len = 13;
 
 	for (s = 0; s < list_len; s++)
 	{
-	if (*(format + 1) == (format_list + s)->specifier[0])
-	{
+		if (*(format + 1) == " "[0])
+		{
+			format++;
+			(*formatt)++;
+			_putchar(' ');
+			print_count++;
+			s = 0;
+			continue;
+		}
+		if (*(format + 1) == (format_list + s)->specifier[0])
+		{
 		print_count += (format_list + s)->printer(arg_list);
 		format++;
 		break;
-	}
+		}
 	}
 	if (s == list_len)
 	{
@@ -62,8 +73,8 @@ int format_looper(const char *format, va_list arg_list, fs format_list[])
 				print_count++;
 			} else
 			{
-			print_count += fs_looper(format, arg_list,
-						 format_list);
+				print_count += fs_looper(format, &format,
+							 arg_list, format_list);
 			format++;
 			}
 		} else
