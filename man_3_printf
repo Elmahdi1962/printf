@@ -27,3 +27,17 @@ In the Example print the value of text with %s give the format of text.
 - prints decimal.
 .IP %i
 - prints integer number.
+.IP %x
+- prints hex number.
+.IP %X
+- prints capital Hex number.
+.IP %o
+- prints octal number.
+.IP %u
+- prints unsigned number.
+.IP %b
+- prints binary of a unsigned integer number.
+.IP %p
+- prints adresses (broken at the moment).
+.IP %R
+- prints Rot13 of a number.
