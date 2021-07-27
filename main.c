@@ -19,10 +19,10 @@ int main(void)
     len2 = printf("Let's try to printf a simple sentence.\n");
     ui = (unsigned int)INT_MAX + 1024;
     addr = (void *)0x7ffe637541f0;
-    d= _printf("   test:     %       s%s\n", "hi",NULL);
+    d= _printf("%r\n");
 
-    
-    printf("test: %d\n", d);
+
+    printf("length: %d\n", d);
     _printf("%!\n");
     _printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
 
