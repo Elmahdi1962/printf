@@ -64,8 +64,7 @@ int format_looper(const char *format, va_list arg_list, fs format_list[])
 		{
 			if (*(format + 1) == '\0')
 			{
-				_putchar('%');
-				return (++print_count);
+				return (-1);
 			}
 			if (*(format + 1) == '%')
 			{
@@ -111,7 +110,6 @@ int parser(const char *format, va_list arg_list)
 		{"p", print_hex},
 		{"R", print_R}
 	};
-	if (!format || (format[0] == '%' && format[1] == '\0'))
-		return (-1);
+
 	return (format_looper(format, arg_list, format_list));
 }
