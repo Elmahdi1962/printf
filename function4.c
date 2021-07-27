@@ -97,33 +97,28 @@ int print_rev(va_list arg)
  *
  * Return: number of chars printed
  */
-int print_R(va_list R)
+int print_R(va_list arg)
 {
-	char *str;
-	unsigned int i, j;
-	int count = 0;
-	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	register short i, j;
+	char rot13[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char ROT13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+	char *s = va_arg(arg, char *);
 
-	str = va_arg(R, char *);
-	if (str == NULL)
-		str = "(ahyy)";
-	for (i = 0; str[i]; i++)
+	if (!s)
 	{
-		for (j = 0; in[j]; j++)
+		return (-1);
+	}
+
+	for (j = 0; s[j]; j++)
+	{
+		if (s[j] < 'A' || (s[j] > 'Z' && s[j] < 'a') || s[j] > 'z')
+			_putchar(s[j]);
+		else
 		{
-			if (in[j] == str[i])
-			{
-				_putchar(out[j]);
-				count++;
-				break;
-			}
-		}
-		if (!in[j])
-		{
-			_putchar(str[i]);
-			count++;
+			for (i = 0; i <= 52; i++)
+				if (s[j] == rot13[i])
+					_putchar(ROT13[i]);
 		}
 	}
-	return (count);
+	return (j);
 }
