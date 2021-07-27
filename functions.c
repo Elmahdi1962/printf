@@ -60,7 +60,7 @@ int print_string(va_list arg_list)
 
 int print_decimal(va_list arg_list)
 {
-	int d = va_arg(arg_list, int), mult = 1, dc, print_count = 0;
+	long int d = va_arg(arg_list, int), mult = 1, dc, print_count = 0;
 
 	if (d < 0)
 	{

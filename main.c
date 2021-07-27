@@ -1,6 +1,7 @@
 #include <limits.h>
 #include <stdio.h>
 #include "holberton.h"
+#include <inttypes.h>
 /**
  * main - Entry point
  *
@@ -33,6 +34,17 @@ int main(void)
         len = _printf("%d", 2.5);
         printf("\n%d\n", len);
 
+        len = _printf("%c", 0);
+        printf("%d\n", len);
+
+	len=_printf("Len:[%010-i]\n", INT16_MAX);
+	printf("%d\n",len);
+
+        len = _printf("%c", NULL);
+        printf("%d\n", len);
+
+	        len = _printf("%d", -255);
+        printf("%d\n", len);
 
 	return (0);
 }
