@@ -13,14 +13,12 @@
 
 int print_char(va_list arg_list)
 {
-/*	char c = va_arg(arg_list, int);
+	char c = va_arg(arg_list, int);
 	int print_count = 0;
 
 	_putchar(c);
 
 	return (++print_count);
-*/
-	return (printf(va_arg(arg_list, int)));
 }
 
 
@@ -36,7 +34,7 @@ int print_char(va_list arg_list)
 
 int print_string(va_list arg_list)
 {
-/*	char *string = va_arg(arg_list, char *);
+	char *string = va_arg(arg_list, char *);
 	int print_count = 0;
 
 	if (string == NULL)
@@ -56,8 +54,6 @@ int print_string(va_list arg_list)
 	}
 	}
 	return (print_count);
-*/
-	return (printf(va_arg(arg_list, char *)));
 }
 
 
