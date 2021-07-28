@@ -72,7 +72,8 @@ int print_octal(va_list arg_list)
 
 int print_binary(va_list arg_list)
 {
-	int num = va_arg(arg_list, int), print_count = 0, size = 0;
+	unsigned int num = va_arg(arg_list, unsigned int);
+	int print_count = 0, size = 0;
 	int tmp = num, j, i = 0;
 	char *str;
 
@@ -81,7 +82,11 @@ int print_binary(va_list arg_list)
 		size++;
 		tmp /= 2;
 	}
-
+	if (num == 0)
+	{
+		_putchar('0');
+		print_count++;
+	}
 	str = malloc(sizeof(char) * size);
 
 	while (num > 0)
