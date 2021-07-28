@@ -40,45 +40,26 @@ int print_memory(va_list arg_list)
 
 int print_STR(va_list arg_list)
 {
-        char *string;
-        int print_count, pc = 0, n = 1;
+	char *string = va_arg(arg_list, char *);
+	int print_count = 0;
 
-        string = va_arg(arg_list, char *);
-
-        if (string == NULL)
-        {
-                string = "(null)";
-        }
-
-        for (print_count = 0; string[print_count] != '\0'; print_count++)
+	if (string == NULL)
 	{
-		if (string[print_count] < 32 ||
-		    string[print_count] >= 127)
+		while ("(null)"[print_count] != '\0')
 		{
-			_putchar('\\');
-			_putchar('x');
-			pc += 2;
-			n = (int)string[print_count] / 16;
-			if (string[print_count] < 16)
-			{
-			pc += 2;
-			_putchar('0');
-			_putchar("0123456789ABCDEF"[(int)string[print_count]]);
-			} else
-			{
-			pc += 2;
-			_putchar(n + '0');
-			_putchar("0123456789ABCDEF"[(int)string[print_count] -
-						    15 * n]);
-			}
-
-		} else
+			_putchar("(null)"[print_count]);
+			print_count++;
+		}
+	} else
+	{
+		while (*string != '\0')
 		{
-                _putchar(string[print_count]);
+			_putchar(*string + 32);
+			string++;
+			print_count++;
 		}
 	}
-
-        return (print_count + pc);
+	return (print_count);
 }
 
 
