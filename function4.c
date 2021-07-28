@@ -41,7 +41,7 @@ int print_memory(va_list arg_list)
 int print_STR(va_list arg_list)
 {
         char *string;
-        int print_count, pc = 0;
+        int print_count, pc = 0, n = 1;
 
         string = va_arg(arg_list, char *);
 
@@ -52,12 +52,26 @@ int print_STR(va_list arg_list)
 
         for (print_count = 0; string[print_count] != '\0'; print_count++)
 	{
-		if ((string[print_count] > 0 && string[print_count] < 32) ||
+		if (string[print_count] < 32 ||
 		    string[print_count] >= 127)
 		{
 			_putchar('\\');
 			_putchar('x');
-			pc += _printf("%X", string[print_count]);
+			pc += 2;
+			n = string[print_count] / 16;
+			if (string[print_count] < 16)
+			{
+			pc += 2;
+			_putchar('0');
+			_putchar("0123456789ABCDEF"[(int)string[print_count]]);
+			} else
+			{
+			pc += 2;
+			_putchar(n + '0');
+			_putchar("0123456789ABCDEF"[(int)string[print_count] -
+						    15 * n]);
+			}
+
 		} else
 		{
                 _putchar(string[print_count]);
