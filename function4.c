@@ -58,7 +58,7 @@ int print_STR(va_list arg_list)
 			_putchar('\\');
 			_putchar('x');
 			pc += 2;
-			n = string[print_count] / 16;
+			n = (int)string[print_count] / 16;
 			if (string[print_count] < 16)
 			{
 			pc += 2;
