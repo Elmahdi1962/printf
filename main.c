@@ -42,5 +42,10 @@ int main(void)
     printf("Unknown:[%r]\n");
     _printf("binary of -1024 is : [%b]\n", -1024);
     printf("unsigned of -1024 is : [%u]\n", -1024);
+    _printf("%S", "\n");
+    printf("-------------------\n");
+    _printf("%S", "\x01\x02\x03\x04\x05\x06\x07");
+    printf("-------------------\n");
+    _printf("Could you print some non-prntable characters?\n%S\nThanks!\n", "Sure:\x1F\x7F\n");
     return (0);
 }

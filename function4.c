@@ -40,27 +40,31 @@ int print_memory(va_list arg_list)
 
 int print_STR(va_list arg_list)
 {
-	char *string = va_arg(arg_list, char *);
-	int print_count = 0;
+        char *string;
+        int print_count, pc = 0;
 
-	if (string == NULL)
+        string = va_arg(arg_list, char *);
+
+        if (string == NULL)
+        {
+                string = "(null)";
+        }
+
+        for (print_count = 0; string[print_count] != '\0'; print_count++)
 	{
-		while ("(null)"[print_count] != '\0')
+		if ((string[print_count] > 0 && string[print_count] < 32) ||
+		    string[print_count] >= 127)
 		{
-			_putchar("(null)"[print_count]);
-			print_count++;
-		}
-	} else
-	{
-		while (*string != '\0')
+			_putchar('\\');
+			_putchar('x');
+			pc += _printf("%X", string[print_count]);
+		} else
 		{
-			_putchar(*string + 32);
-			string++;
-			print_count++;
+                _putchar(string[print_count]);
 		}
 	}
-	return (print_count);
 
+        return (print_count + pc);
 }
 
 
