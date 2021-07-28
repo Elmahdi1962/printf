@@ -74,9 +74,10 @@ int print_binary(va_list arg_list)
 {
 	unsigned int num = va_arg(arg_list, unsigned int);
 	int print_count = 0, size = 0;
-	int tmp = num, j, i = 0;
+	int tmp, j, i = 0;
 	char *str;
 
+	tmp = num;
 	while (tmp > 0)
 	{
 		size++;
@@ -88,6 +89,9 @@ int print_binary(va_list arg_list)
 		print_count++;
 	}
 	str = malloc(sizeof(char) * size);
+
+	if (str == NULL)
+		return (-1);
 
 	while (num > 0)
 	{

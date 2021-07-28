@@ -40,7 +40,7 @@ int main(void)
     printf("Len:[%d]\n", len2);
     _printf("Unknown:[%r]\n");
     printf("Unknown:[%r]\n");
-    _printf("binary of 98 is : [%b]\n", 98);
-    printf("binary of 98 is : [%z]\n", 98);
+    _printf("binary of -1024 is : [%b]\n", -1024);
+    printf("unsigned of -1024 is : [%u]\n", -1024);
     return (0);
 }
