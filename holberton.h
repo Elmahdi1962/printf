@@ -1,6 +1,8 @@
 #ifndef HOLBERTON_H
 #define HOLBERTON_H
 #include <stdarg.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 /**
  * struct format_specifiers - struct holing each format specifier with
@@ -29,7 +31,6 @@ int print_HEX(va_list);
 int _pow(unsigned int base, int power);
 int print_octal(va_list arg_list);
 char *inttostr(int number);
-int print_unsignedTobinary(int num);
 int print_binary(va_list arg_list);
 int _strlen(char *string);
 int intlen(int number);

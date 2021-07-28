@@ -1,8 +1,5 @@
-#include <unistd.h>
 #include "holberton.h"
-#include <stdarg.h>
-#include <stdlib.h>
-#include <stdio.h>
+
 /**
  * print_char - prints characters
  *

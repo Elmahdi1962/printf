@@ -1,6 +1,5 @@
 #include "holberton.h"
-#include <stdarg.h>
-#include <stdlib.h>
+
 
 /**
  * print_unsigned - prints unsigned integer
@@ -63,22 +62,6 @@ int print_octal(va_list arg_list)
 	return (print_count);
 }
 
-
-/**
- * print_unsignedTobinary - function that prints the binary
- * representation of a number
- * @num: num
- * Return: binary number
- */
-
-int print_unsignedTobinary(int num)
-{
-	if (num < 2)
-		return (num);
-	return (print_unsignedTobinary(num / 2) * 10 + num % 2);
-}
-
-
 /**
  * print_binary - function that prints the binary
  * representation of a number
@@ -89,18 +72,32 @@ int print_unsignedTobinary(int num)
 
 int print_binary(va_list arg_list)
 {
-	int num = va_arg(arg_list, int), print_count = 0, result;
+	int num = va_arg(arg_list, int), print_count = 0, size = 0;
+	int tmp = num, j, i = 0;
 	char *str;
 
-	result = print_unsignedTobinary(num);
-	str = inttostr(result);
-
-	while (*str != '\0')
+	while (tmp > 0)
 	{
-		_putchar(*str);
-		str++;
-		if (*str == 0 || (*str > 31 && *str < 127))
-			print_count++;
+		size++;
+		tmp /= 2;
 	}
+
+	str = malloc(sizeof(char) * size);
+
+	while (num > 0)
+	{
+		str[i] = (num % 2) + '0';
+		num /= 2;
+		i++;
+	}
+
+	for (j = i - 1; j >= 0; j--)
+	{
+		print_count++;
+		_putchar(str[j]);
+	}
+
+	free(str);
+
 	return (print_count);
 }
