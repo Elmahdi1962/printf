@@ -16,7 +16,7 @@
 int fs_looper(const char *format, const char **formatt, va_list arg_list,
 	      fs format_list[])
 {
-	int print_count = 0, s = 0, list_len = 11;
+	int print_count = 0, s = 0, list_len = 12;
 
 	while (s < list_len)
 	{
